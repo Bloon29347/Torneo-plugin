@@ -21,7 +21,7 @@ jobs:
       - name: Descomprimir proyecto
         run: |
           mkdir proyecto
-          unzip PvPTournament-Actualizado.zip -d proyecto
+          unzip PvPTournament-Corregido.zip -d proyecto
 
       - name: Compilar con Maven
         working-directory: proyecto
