@@ -1,0 +1,37 @@
+name: Compilar PvPTournament
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Instalar Java 25
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+          cache: maven
+
+      - name: Descomprimir proyecto
+        run: |
+          mkdir proyecto
+          unzip PvPTournament-Actualizado.zip -d proyecto
+
+      - name: Compilar con Maven
+        working-directory: proyecto
+        run: mvn -B clean package
+
+      - name: Guardar el JAR compilado
+        uses: actions/upload-artifact@v4
+        with:
+          name: PvPTournament-JAR
+          path: proyecto/target/*.jar
+          if-no-files-found: error
+          w
