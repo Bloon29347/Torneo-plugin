@@ -17,7 +17,6 @@ jobs:
         with:
           distribution: temurin
           java-version: '25'
-          cache: maven
 
       - name: Descomprimir proyecto
         run: |
@@ -34,4 +33,4 @@ jobs:
           name: PvPTournament-JAR
           path: proyecto/target/*.jar
           if-no-files-found: error
-      
+    
